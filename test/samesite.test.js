@@ -50,6 +50,10 @@ test('Should add SameSite to a cookie without it set', () => {
     if (opts.sameSite !== 'None') {
         throw new Error(`Expected sameSite cookiue opt to be 'None', got '${ opts.sameSite }'`);
     }
+
+    if (!opts.secure) {
+        throw new Error(`Expected cookie to be in secure mode`);
+    }
 });
 
 test('Should add SameSite to a cookie without it set when browser is Chromium', () => {

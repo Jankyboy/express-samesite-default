@@ -18,6 +18,7 @@ export function sameSiteCookieMiddleware() : Middleware {
         const setCookieWithSameSite = function (name, value, opts, ...args) : void {
             opts = opts || {};
             opts.sameSite = opts.sameSite || 'None';
+            opts.secure = true;
             return cookie.call(this, name, value, opts, ...args);
         };
 

@@ -1,7 +1,7 @@
 Express SameSite Default
 ------------------------
 
-Defaults cookies to SameSite=None if not specified.
+Defaults cookies to `SameSite=None` if not specified, and adds `Secure` flag to all cookies.
 
 Usage:
 
