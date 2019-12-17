@@ -8,7 +8,7 @@
     "lint": "eslint src/ test/ *.js --ext .js,.jsx",
     "flow-typed": "rm -rf ./flow-typed && flow-typed install && flow-typed install mocha@4 && flow-typed install express@4",
     "flow": "flow",
-    "babel": "babel src/*.js src/**/*.js --exclude=node_modules --out-dir ./src --source-maps inline",
+    "babel": "babel src/*.js src/**/*.js --ignore=node_modules --out-dir ./src --source-maps inline",
     "test": "npm run lint && npm run flow-typed && npm run flow && npm run jest",
     "release": "./publish.sh",
     "release:patch": "./publish.sh patch",
