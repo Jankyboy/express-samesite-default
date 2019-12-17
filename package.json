@@ -50,5 +50,8 @@
     "babel-core": "^7.0.0-bridge.0",
     "flow-bin": "^0.108.0",
     "grumbler-scripts": "^3"
+  },
+  "dependencies": {
+    "bowser": "^2.7.0"
   }
 }

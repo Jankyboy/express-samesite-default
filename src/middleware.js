@@ -1,15 +1,23 @@
 /* @flow */
 
+import bowser from 'bowser';
+
 import type { ExpressRequest, ExpressResponse } from './types';
 
 type Middleware = (req : ExpressRequest, res : ExpressResponse, next : Function) => void;
 
+function isChrome67Plus(req : ExpressRequest) : boolean {
+    try {
+        const browser = bowser.getParser(req.get('user-agent') || '');
+        return browser.satisfies({ chrome: '>=67', chromium: '>=67' });
+    } catch (err) {
+        return false;
+    }
+}
+
 export function sameSiteCookieMiddleware() : Middleware {
     return (req, res, next) => {
-        const userAgent = req.get('User-Agent') || '';
-        const isChrome = userAgent.length > 0 && userAgent.match(/Chrom(e|ium)/);
-
-        if (!isChrome) {
+        if (!isChrome67Plus(req)) {
             return next();
         }
 
